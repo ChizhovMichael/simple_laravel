@@ -1,0 +1,314 @@
+// Variables
+@import '_variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+/***********
+// Normalize.css
+// Normalize.css makes browsers render all elements more 
+// consistently and in line with modern standards. 
+// It precisely targets only the styles that need normalizing.
+***********/
+
+@import '~normalize.css/normalize.css';
+
+
+/******************************
+[Table of Contents]
+1. Main
+2. Navigation
+3. Modal
+4. Media
+******************************/
+/******************************
+| Main
+******************************/
+body {
+	overflow-y: scroll; /* has to be scroll, not auto */
+  	-webkit-overflow-scrolling: touch;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, button, input, label, textarea, select, option, pre {
+	font-family: $fontcontent;
+}
+
+*:focus {
+	outline: none;
+}
+.border-main {
+	border-color: $color-main;
+	transition: 0.3s;
+	&:focus {
+		border-color: $color-main;
+		box-shadow: 0 0 0 0.2rem rgba($color-main, 0.25)
+	}
+	&:hover {
+		border-color: rgba($color-main, 0.8);
+	}
+}
+.bg-main {
+	background: $color-main;
+}
+.color-main {
+	color: $color-main;
+	transition: 0.3s;
+	&:hover {
+		color: rgba($color-main, 0.8);
+	}
+}
+
+input.placeholder-main {
+	&::placeholder {
+		color: rgba($color-main, 0.5);
+	}
+	&:-moz-placeholder {
+		color: rgba($color-main, 0.5);
+	}
+	&:-ms-input-placeholder {
+		color: rgba($color-main, 0.5);
+	}
+	&::-webkit-input-placeholder {
+		color: rgba($color-main, 0.5);
+	}
+	&::-moz-placeholder {
+		color: rgba($color-main, 0.5);
+	}
+}
+.comment-checkbox {
+	opacity: 0;
+	&~p {
+		max-height: 0;
+		transition: 0.3s;
+		overflow: hidden;
+		margin: 0;
+		border-top: 1px solid rgba(255, 255, 255,0.1);
+		text-align: justify;
+	}
+	&:checked {
+		&~p {
+			max-height: 1000px;
+			height: auto;
+			overflow: visible;
+			margin: 1em 0;
+		}
+	}
+}
+.blacklist {
+	transition: 0.3s;
+	label {
+		cursor: pointer;
+		p {
+			opacity: 0.65;
+		}
+	}
+	&:hover {
+		@extend .shadow;
+	}
+}
+.c-p {
+	cursor: pointer;
+}
+.userphoto {
+	width: 7rem;
+}
+/***********
+// pagination
+***********/
+.pagination {
+	display: table;
+    padding: 0;
+    margin: 5em auto;
+    text-align: center;
+	list-style: none;
+	box-shadow: 0px 18px 40px -12px $color-main;
+	li {
+		display: block;
+		float: left;
+	}
+	.page-item {
+		&:first-child .page-link {
+			margin-left: 0;
+			border-radius: 5px 0 0 5px;
+		}
+		&:last-child .page-link {
+			border-radius: 0 5px 5px 0;
+		}
+		&.active .page-link {
+		  z-index: 2;
+		  @extend .bg-dark;
+		  @extend .text-light;
+		  pointer-events: none; 
+		  cursor: default;
+		  border-color: $color-main;
+		}
+	}
+	  
+	.page-link {
+		position: relative;
+		display: block;
+		padding: 0;
+		margin-left: -1px;
+		line-height: 35px;
+		width: 35px;
+		text-align:center;
+		@extend .bg-dark;
+		@extend .text-light;
+		text-decoration: none;
+		transition: 0.3s;
+		&:hover {
+			@extend .bg-dark;
+		  	@extend .text-light;
+		}
+		&:focus {
+			box-shadow: 0 0 0 0.2rem rgba($color-main, 0.25)
+		}
+	}
+	  
+	.disabled .page-link,
+	.page-link.disabled {
+		color: #d2d2d2;
+		pointer-events: none;
+		background-color: #f8f8f8;
+		cursor: default; 
+	}
+	  
+	  
+	.pager {
+		display:table;
+		list-style:none;
+		padding:0; 
+		font-size:12px;
+	}
+
+	.pager .page-link {
+		display:block; 
+		width:auto;
+		white-space:nowrap;
+		padding:0 10px;
+		float:left;
+
+		&:first-child {
+			border-radius: 5px 0 0 5px;
+		}
+		&:last-child {
+			border-radius: 0 5px 5px 0;
+		}
+
+	}
+	.pager span,
+	.pager .material-icons {
+		display:block;
+		float:left;
+	}
+	  
+	  
+	.pagination .material-icons,
+	.pager .material-icons {
+		font-size:16px; 
+		line-height:inherit;
+	}
+}
+
+/**********
+// Modal window
+*************/
+.modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	background: rgba(0, 0, 0, 0.5);
+	&__wrapp {
+		&.message {
+			max-height: 80%;
+			height: auto;
+		}
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		height: 80%;
+		overflow: auto;
+		&__hide {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			.noscroll {
+				width: calc(100% + 30px);
+				height: 100%;
+				overflow: auto;
+				.inside__scroll {
+					padding-right: 30px;
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+	&__background {
+		height: 20em;
+		@extend .bg-dark;
+		img {
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	.close {
+		position: absolute;
+		top: 10px;
+		right: 10px;		
+	}
+}
+.hide {
+	overflow: hidden;
+}
+.photo {
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	input {
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+}
+
+
+
+/******************************
+| Media
+******************************/
+
+@media screen and(max-width: 568px) {
+	.pagination {
+		.page-link {
+			line-height: 25px;
+			width: 25px;
+			font-size: 0.9rem;
+		}
+	} 
+}
+
+//media screen for small display 
+@media screen and (max-width: 900px) {
+	html {
+		font-size: 85%;
+	}
+	.userphoto {
+		width: 5.5rem;
+	}
+}
+//media screen for large display
+@media screen and (min-width: 1490px) and (max-width: 1800px) {
+	
+}
+//media screen for high large display 
+@media screen and (min-width: 1801px) {
+	
+}

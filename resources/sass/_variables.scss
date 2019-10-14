@@ -1,0 +1,26 @@
+
+@charset "utf-8";
+
+
+/******************************
+// [Table of Contents]
+// Variable color and font for text, block, etc.
+
+******************************/
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+
+$color-main: #ffe484;
+
+$fontcontent: 'Ubuntu', sans-serif;
+
+/***********
+// Overlay Scrollbars 
+// A javascript scrollbar plugin which hides native scrollbars, provides
+// custom styleable overlay scrollbars and keeps the native functionality and feeling
+***********/
+
+@import '~overlayscrollbars/css/OverlayScrollbars.css';
+
+
