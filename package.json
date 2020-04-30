@@ -14,7 +14,7 @@
         "cross-env": "^5.1",
         "current-device": "^0.9.1",
         "exif-js": "^2.3.0",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "laravel-mix": "^4.0.7",
         "overlayscrollbars": "^1.9.1",
         "popper.js": "^1.12",
